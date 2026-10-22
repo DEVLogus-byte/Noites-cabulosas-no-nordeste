@@ -32,3 +32,14 @@ Tudo é desenhado/sonorizado por código: **não há assets externos**.
 ## Ajustes rápidos
 - Dificuldade: `VISION`, `HALF_FOV`, `NOISE_RADIUS`, `CHASE_SPEED` em `monster.gd`; `WALK`/`RUN` em `player.gd`.
 - Raio da lanterna: `radius` em `level.gd` (`_update_darkness`).
+
+## Exportar para HTML5 (Web)
+O projeto já vem com o preset **Web** em `export_presets.cfg`, configurado para gerar `index.html`
+(sem threads, então roda em qualquer hospedagem, inclusive itch.io, GitHub Pages e Netlify).
+
+1. No Godot: *Projeto → Exportar…* → preset **Web** → **Exportar Projeto** (já aponta para `build/web/index.html`).
+   - Na primeira vez, instale os *Export Templates* em *Editor → Gerenciar Modelos de Exportação*.
+   - Ou por linha de comando: `godot --headless --export-release "Web" build/web/index.html`
+2. Hospede a pasta `build/web/` inteira (`index.html`, `.js`, `.wasm`, `.pck`...).
+3. Para testar localmente **não abra o index.html com duplo clique** (o navegador bloqueia o .wasm em `file://`).
+   Rode na pasta `build/web/`: `python3 -m http.server 8000` e abra http://localhost:8000
